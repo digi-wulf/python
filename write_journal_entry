@@ -6,7 +6,18 @@ debug = print('I am Wulf')
 def write_journal():
     print("creating file...\n")
     
-    fname = datetime.datetime.now().strftime("%Y-%m-%d__%I%M%S")
+    while True:
+        answer = input("Would you like to name the file? [Y/N] ")
+        print("\n")
+        if answer == 'y' or answer == 'Y':
+            fname = input('')
+            break
+        elif answer == 'n' or answer == 'N':
+            fname = datetime.datetime.now().strftime("%Y-%m-%d__%I%M%S")
+            break
+        else:
+            print("that is not an aswer...")
+            print("Enter either yes/no\n")
     
     open(f"Journal_Entry\{fname}.txt", "x")
     journal = open(f"Journal_Entry\{fname}.txt", "w")
@@ -19,6 +30,8 @@ def write_journal():
     return
 
 def read_journal():
+    # Clearing the Screen
+    os.system('cls')
     # folder path
     path = r"C:\Users\adrea\Documents\GitHub\python\Journal_Entry"
     # Iterate directory
@@ -27,7 +40,7 @@ def read_journal():
         if file.endswith('.txt'):
             print(file)
             
-    fname = input("Enter file you wish to read: ")
+    fname = input("\nEnter file you wish to read: ")
     journal = open(f"Journal_Entry\{fname}", "r")
     print('\n' + journal.read() + '\n')
     journal.close()
