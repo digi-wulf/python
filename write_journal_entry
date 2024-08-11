@@ -3,19 +3,49 @@ import datetime
 
 debug = print('I am Wulf')
 
-def journal():
+def write_journal():
     print("creating file...\n")
     
     fname = datetime.datetime.now().strftime("%Y-%m-%d__%I%M%S")
     
-    open(f"Journal_Entry\{fname}", "x")
-    journal = open(f"Journal_Entry\{fname}", "w")
+    open(f"Journal_Entry\{fname}.txt", "x")
+    journal = open(f"Journal_Entry\{fname}.txt", "w")
+    
     print("Begin typing...\n")
     journal.write(input(''))
     journal.close
         
     print("\nFile Created!\n")
     return
+
+def read_journal():
+    # folder path
+    path = r"C:\Users\adrea\Documents\GitHub\python\Journal_Entry"
+    # Iterate directory
+    for file in os.listdir(path):
+        # check only text files
+        if file.endswith('.txt'):
+            print(file)
+            
+    fname = input("Enter file you wish to read: ")
+    journal = open(f"Journal_Entry\{fname}", "r")
+    print('\n' + journal.read() + '\n')
+    journal.close()
+    
+    while True:
+        answer = input("Would you like to continue? [Y/N] ")
+        print("\n")
+        if answer == 'y' or answer == 'Y':
+            # Clearing the Screen
+            os.system('cls')
+            return
+        elif answer == 'n' or answer == 'N':
+            print("Good Bye!")
+            exit()
+        else:
+            print("that is not an aswer...")
+            print("Enter either yes/no\n")
+    
 
 # Clearing the Screen
 os.system('cls')
@@ -28,11 +58,22 @@ while True:
     answer = input("Would you like to write a journal entry? [Y/N] ")
     print("\n")
     if answer == 'y' or answer == 'Y':
-        journal()
+        write_journal()
         break
     elif answer == 'n' or answer == 'N':
-        print("Why did you wake me up then...?\n")
-        break
+        while True:
+            answer2 = input("Do you want to read a journal entry? [Y/N] ")
+            print("\n")
+            if answer2 == 'y' or answer2 == 'Y':
+                read_journal()
+                break
+            elif answer2 == 'n' or answer2 == 'N':
+                print("Why did you wake me up then...?\n")
+                exit()
+            else:
+                print("that is not an aswer...")
+                print("Enter either yes/no\n")
+            break
     else:
         print("that is not an aswer...")
         print("Enter either yes/no\n")
