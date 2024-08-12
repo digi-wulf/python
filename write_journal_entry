@@ -1,7 +1,25 @@
+#
+# File read/write txt file program
+#
+
 import os
 import datetime
 
-debug = print('I am Wulf')
+def mainMenu(name):
+    print(f"Hello {name}!\n")
+    while True:
+        print("[1] Read journal entry\n[2] Write journal entry")
+        answer = input("What would you like to do? ")
+        print("\n")
+        if answer == '2' or answer == 'w' or answer == 'W':
+            write_journal()
+            break
+        elif answer == '1' or answer == 'r' or answer == 'R':
+            read_journal()
+            break
+        else:
+            print("that is not an aswer...")
+            print("Enter either yes/no\n")
 
 def write_journal():
     print("creating file...\n")
@@ -32,6 +50,8 @@ def write_journal():
 def read_journal():
     # Clearing the Screen
     os.system('cls')
+    
+    print("Txt Files:")
     # folder path
     path = r"C:\Users\adrea\Documents\GitHub\python\Journal_Entry"
     # Iterate directory
@@ -45,19 +65,18 @@ def read_journal():
     print('\n' + journal.read() + '\n')
     journal.close()
     
-    while True:
-        answer = input("Would you like to continue? [Y/N] ")
-        print("\n")
-        if answer == 'y' or answer == 'Y':
-            # Clearing the Screen
-            os.system('cls')
-            return
-        elif answer == 'n' or answer == 'N':
-            print("Good Bye!")
-            exit()
-        else:
-            print("that is not an aswer...")
-            print("Enter either yes/no\n")
+    answer = input("Would you like to continue? [Y/N] ")
+    print("\n")
+    if answer == 'y' or answer == 'Y':
+        # Clearing the Screen
+        os.system('cls')
+        mainMenu(name)
+    elif answer == 'n' or answer == 'N':
+        print("Good Bye!")
+        exit()
+    else:
+        print("that is not an aswer...")
+        print("Enter either yes/no\n") 
     
 
 # Clearing the Screen
@@ -65,28 +84,4 @@ os.system('cls')
 
 name = input("Enter Name: ")
 print("\n")
-print(f"Hello {name},")
-
-while True:
-    answer = input("Would you like to write a journal entry? [Y/N] ")
-    print("\n")
-    if answer == 'y' or answer == 'Y':
-        write_journal()
-        break
-    elif answer == 'n' or answer == 'N':
-        while True:
-            answer2 = input("Do you want to read a journal entry? [Y/N] ")
-            print("\n")
-            if answer2 == 'y' or answer2 == 'Y':
-                read_journal()
-                break
-            elif answer2 == 'n' or answer2 == 'N':
-                print("Why did you wake me up then...?\n")
-                exit()
-            else:
-                print("that is not an aswer...")
-                print("Enter either yes/no\n")
-            break
-    else:
-        print("that is not an aswer...")
-        print("Enter either yes/no\n")
+mainMenu(name)
