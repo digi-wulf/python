@@ -3,6 +3,7 @@
 #
 
 import os
+from pathlib import Path
 import datetime
 
 def mainMenu(name):
@@ -52,31 +53,35 @@ def read_journal():
     os.system('cls')
     
     print("Txt Files:")
-    # folder path
-    path = r"C:\Users\adrea\Documents\GitHub\python\Journal_Entry"
+
+    data_folder = Path("Journal_Entry/")
     # Iterate directory
-    for file in os.listdir(path):
+    for file in os.listdir(data_folder):
         # check only text files
         if file.endswith('.txt'):
             print(file)
             
     fname = input("\nEnter file you wish to read: ")
+    
+    print("\n" + f"************************ {fname} Content ************************")
     journal = open(f"Journal_Entry\{fname}", "r")
     print('\n' + journal.read() + '\n')
     journal.close()
+    print("******************************************************************************\n")
     
-    answer = input("Would you like to continue? [Y/N] ")
-    print("\n")
-    if answer == 'y' or answer == 'Y':
-        # Clearing the Screen
-        os.system('cls')
-        mainMenu(name)
-    elif answer == 'n' or answer == 'N':
-        print("Good Bye!")
-        exit()
-    else:
-        print("that is not an aswer...")
-        print("Enter either yes/no\n") 
+    while True:
+        answer = input("Would you like to continue? [Y/N] ")
+        print("\n")
+        if answer == 'y' or answer == 'Y':
+            # Clearing the Screen
+            os.system('cls')
+            mainMenu(name)
+        elif answer == 'n' or answer == 'N':
+            print("Good Bye!")
+            exit()
+        else:
+            print("that is not an aswer...")
+            print("Enter either yes/no\n")
     
 
 # Clearing the Screen
