@@ -15,7 +15,7 @@ def department_count(entries):
 
     return department_counts, invalid_count
 
-entries = ['HRD', 'MKT', 'HRD', 'IT', 'ENG', 'HRD', 'TEST', 'HRD', 'TEST', 'HRD', 'HRD', 'TEST', 'IT', 'TEST', 'HRD', 'TEST', 'IT', 'TEST', 'ENG', 'MKT', 'TEST', 'IT', 'IT', 'HRD' 'GUEST', 'HRD' 'GUEST', 'FIN', 'HRD', 'GUEST']
+entries = ['HRD', 'MKT', 'HRD', 'IT', 'ENG', 'HRD', 'TEST', 'HRD', 'TEST', 'HRD', 'HRD', 'TEST', 'IT', 'TEST', 'HRD', 'TEST', 'IT', 'TEST', 'ENG', 'MKT', 'TEST', 'IT', 'IT', 'HRD' 'GUEST']
 print(department_count(entries))
 
 # Expected return
