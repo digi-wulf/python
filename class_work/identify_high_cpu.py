@@ -1,8 +1,11 @@
 def identify_high_cpu(cpu_list):
     dict_list = dict(enumerate(cpu_list))
-    dict_list = dict((k, v) for k, v in dict_list.items() if v > 90)
+    lst = []
+    for k, v in dict_list.items():
+        if float(v) > 90.0:
+            lst.append(k)
             
-    return list(dict_list.keys())
+    return lst
     
 
 cpu_list = [85.0, 92.5, 88.0, 95.2]
