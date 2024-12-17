@@ -67,7 +67,7 @@ def read_journal():
     journal = open(f"Journal_Entry\{fname}", "r")
     print('\n' + journal.read() + '\n')
     journal.close()
-    print("******************************************************************************\n")
+    print("**************************************************************************\n")
     
     while True:
         answer = input("Would you like to continue? [Y/N] ")
